@@ -3,9 +3,9 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from . import apis
 
 urlpatterns = [
-    path('upload/', apis.MenuUploadApi.as_view()),
-    path('total/', apis.OrdersAmountApi().as_view()),
-    path('menus/', apis.MenuFetchOrderApi().as_view()),
+    path('upload/', apis.MenuUploadApi.as_view(), name='upload'),
+    path('total/', apis.OrdersAmountApi().as_view(), name='total'),
+    path('menus/', apis.MenuFetchOrderApi().as_view(), name='order'),
 
 ]
 
