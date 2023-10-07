@@ -3,6 +3,7 @@ from django.db import models
 
 
 class UserManager(auth_models.BaseUserManager):
+    """Managers for creation user and superuser"""
     def create_user(self, first_name: str, last_name: str, email: str, password: str = None,
                     is_staff=False, is_superuser=False) -> "User":
         if not email:
@@ -38,12 +39,12 @@ class UserManager(auth_models.BaseUserManager):
 
 
 class User(auth_models.AbstractUser):
-    """Employee model"""
+    """User model, which uses by Employees and Restaurant(like single manager)"""
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    company = models.CharField(max_length=255)
     email = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
+    company = models.CharField(max_length=255)
     username = None
 
     objects = UserManager()
@@ -53,6 +54,7 @@ class User(auth_models.AbstractUser):
 
 
 class Restaurant(models.Model):
+    """Extension for 'single managers' to relate on restaurant, which offers menu"""
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="restaurant")
     name = models.CharField(max_length=255, unique=True)
     address = models.CharField(max_length=255, default='delivery')

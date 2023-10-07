@@ -1,3 +1,4 @@
+"""URL routing for Menu-related actions"""
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from . import apis

@@ -1,4 +1,4 @@
-"""Module with functionality"""
+"""Module with functionality related to User"""
 import dataclasses
 import datetime
 from typing import TYPE_CHECKING
@@ -10,27 +10,6 @@ from . import models
 
 if TYPE_CHECKING:
     from .models import User, Restaurant
-
-
-@dataclasses.dataclass
-class UserDataClass:
-    """Dataclass to represent serialized User model as class"""
-    first_name: str
-    last_name: str
-    email: str
-    company: str
-    password: str = None
-    id: int = None
-
-    @classmethod
-    def from_instance(cls, user: "User") -> "UserDataClass":
-        return cls(
-            first_name=user.first_name,
-            last_name=user.last_name,
-            email=user.email,
-            id=user.id,
-            company=user.company,
-        )
 
 
 @dataclasses.dataclass
@@ -53,6 +32,27 @@ class RestaurantDataClass:
             description=restaurant.description,
             info_href=restaurant.info_href,
             id=restaurant.id,
+        )
+
+
+@dataclasses.dataclass
+class UserDataClass:
+    """Dataclass to represent serialized User model as class"""
+    first_name: str
+    last_name: str
+    email: str
+    company: str
+    password: str = None
+    id: int = None
+
+    @classmethod
+    def from_instance(cls, user: "User") -> "UserDataClass":
+        return cls(
+            first_name=user.first_name,
+            last_name=user.last_name,
+            email=user.email,
+            company=user.company,
+            id=user.id
         )
 
 

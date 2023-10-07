@@ -1,19 +1,32 @@
-import datetime
+"""Menu Manager APIs"""
 
-from rest_framework import views, response, permissions
+import datetime
+from rest_framework import views, response, permissions, status
 
 from user import models as user_models
 from user.authentication import CustomUserAuthentication
+
 from . import models as menu_models
 from . import serializer as menu_serializer
 
 
 class MenuUploadApi(views.APIView):
+    """
+    Admin user which associated with restaurant can add menus
+    POST:
+    {
+    "description": "adfgahadfs"
+    }
+    """
     authentication_classes = (CustomUserAuthentication,)
     permission_classes = (permissions.IsAdminUser,)
 
     def get(self, request):
         user = request.user
+
+        if user.restaurant is None:
+            return status.HTTP_403_FORBIDDEN
+
         try:
             menus_obj = menu_models.Menu.objects.filter(restaurant=user.restaurant).all()
             serializer = menu_serializer.MenuSerializer(menus_obj, many=True)
@@ -64,6 +77,12 @@ class OrdersAmountApi(views.APIView):
 
 
 class MenuFetchOrderApi(views.APIView):
+    """
+    select menu by id
+    {
+    "sel_id": 1
+    }
+    """
     authentication_classes = (CustomUserAuthentication,)
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
