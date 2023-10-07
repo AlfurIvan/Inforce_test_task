@@ -42,6 +42,9 @@ INSTALLED_APPS = [
 
     "corsheaders",
     "rest_framework",
+    "user",
+    "menu_manager",
+
 ]
 
 MIDDLEWARE = [
@@ -135,3 +138,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = ['http://localhost:3000', 'http://0.0.0.0:3000']
 
+
+AUTH_USER_MODEL = "user.User"
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
