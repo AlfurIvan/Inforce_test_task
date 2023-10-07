@@ -65,7 +65,7 @@ class OrdersAmountApi(views.APIView):
 
 class MenuFetchOrderApi(views.APIView):
     authentication_classes = (CustomUserAuthentication,)
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get(self, request):
         try:

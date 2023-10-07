@@ -18,7 +18,7 @@ class UserDataClass:
     first_name: str
     last_name: str
     email: str
-    restaurant: models.Restaurant = None
+    company: str
     password: str = None
     id: int = None
 
@@ -29,7 +29,7 @@ class UserDataClass:
             last_name=user.last_name,
             email=user.email,
             id=user.id,
-            restaurant=user.restaurant,
+            company=user.company,
         )
 
 
@@ -66,8 +66,7 @@ def create_user(user_dc: "UserDataClass") -> "UserDataClass":
         first_name=user_dc.first_name,
         last_name=user_dc.last_name,
         email=user_dc.email,
-        is_staff=False,
-        restaurant=None,
+        company=user_dc.company,
     )
     if user_dc.password is not None:
         instance.set_password(user_dc.password)
