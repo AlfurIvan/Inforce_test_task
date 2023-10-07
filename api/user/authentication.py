@@ -1,3 +1,4 @@
+"""Auth module for user"""
 from django.conf import settings
 from rest_framework import authentication, exceptions
 import jwt
@@ -6,7 +7,7 @@ from . import models
 
 
 class CustomUserAuthentication(authentication.BaseAuthentication):
-
+    """Authentication class"""
     def authenticate(self, request):
 
         token = request.COOKIES.get("jwt")

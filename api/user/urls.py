@@ -1,3 +1,4 @@
+"""URL routing for User-related actions"""
 from django.urls import path
 
 from . import apis

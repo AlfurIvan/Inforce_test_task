@@ -3,9 +3,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('old/lunch/', include('menu_manager.urls')),
+    # path('old/lunch/', include('menu_manager.urls')),
     path('lunch/', include('menu_manager.urls')),
-    path('old/', include('user.urls')),
+    # path('old/', include('user.urls')),
     path('', include('user.urls')),
 ]
 
