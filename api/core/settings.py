@@ -24,6 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 JWT_SECRET = os.environ.get('JWT_SECRET')
 
+NEWEST_USERS_APP_VERSION = "2.0.0"
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
@@ -57,6 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     "corsheaders.middleware.CorsMiddleware",
+    "core.custom_middleware.VersionHeaderMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
