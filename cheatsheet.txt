@@ -1,0 +1,33 @@
+pip freeze > api/requirements.txt
+sudo docker-compose up -d --build
+sudo docker-compose exec api python manage.py makemigrations
+flake8 --ignore=E501 api
+
+{
+"email": "admin@gmail.com",
+"password": "123"
+}
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john@gmail.com",
+    "password": "123123",
+    "company": "ABC"
+}
+
+{
+    "first_name": "Ann",
+    "last_name": "Doe",
+    "email": "ann@gmail.com",
+    "password": "123123",
+    "company": "ABC"
+}
+
+{
+    "description": "adfgahadfs"
+}
+
+{
+    "sel_id": 1
+}

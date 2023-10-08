@@ -1,5 +1,4 @@
 .idea
 /api/db.sqlite3
-/cheatsheet.txt
 /api/user/migrations/
 /api/menu_manager/migrations/

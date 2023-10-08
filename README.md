@@ -21,3 +21,6 @@ And also can see the history of menus, related to them
 Admins with related restaurants can see total amount of orders & personal data of employees on /lunch/total
 
 Employees can look on current menus list on /lunch/menus (GET) and order them by id (POST)
+
+AFTER THE DEADLINE appears functional to handle different versions(through X-Frontend-Version header handling using custom middleware).
+And now user with older version in X-Frontend-Version header will be redirected from /some_url to /old/some_url.
